@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/Atlas', AtlasRouter);
+app.use('/Atlass', AtlasRouter);
 app.use('/selector', selectorRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/resource', resourceRouter);
