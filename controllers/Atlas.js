@@ -20,7 +20,7 @@ exports.Atlas_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: Atlas detail: ' + req.params.id);
 };
 // List of all Atlas
-exports.Atlas_list = async function(req, res) { 
+exports.Atlas_detail = async function(req, res) { 
     try{ 
         theAtlas = await Atlas.find(); 
         res.send(theAtlas); 
@@ -36,7 +36,7 @@ exports.Atlas_create_post = function(req, res) {
  res.send('NOT IMPLEMENTED: Atlas create POST');
 };
 // List of all Atlas
-exports.Atlas_list = async function(req, res) { 
+exports.Atlas_create_post = async function(req, res) { 
     try{ 
         theAtlas = await Atlas.find(); 
         res.send(theAtlas); 
@@ -52,7 +52,7 @@ exports.Atlas_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: Atlas delete DELETE ' + req.params.id);
 };
 // List of all Atlas
-exports.Atlas_list = async function(req, res) { 
+exports.Atlas_delete = async function(req, res) { 
     try{ 
         theAtlas = await Atlas.find(); 
         res.send(theAtlas); 
@@ -68,7 +68,7 @@ exports.Atlas_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: Atlas update PUT' + req.params.id);
 };
 // List of all Atlas
-exports.Atlas_list = async function(req, res) { 
+exports.Atlas_update_put = async function(req, res) { 
     try{ 
         theAtlas = await Atlas.find(); 
         res.send(theAtlas); 

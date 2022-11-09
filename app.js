@@ -54,6 +54,7 @@ async function recreateDB() {
     console.log("First object saved")
   });
 
+
   let instance2 = new
     Atlas({
       name: "Thailand", state: 'Bangkok',
@@ -75,6 +76,7 @@ async function recreateDB() {
     console.log("Third object saved")
   });
 }
+
 let reseed = true;
 if (reseed) { recreateDB(); }
 // catch 404 and forward to error handler
