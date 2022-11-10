@@ -2,31 +2,31 @@ extends layout
 block content 
   h1=title 
   - let items = results 
-  button.btn( class="btn-primary ml-1", onclick= `click(\"/Atlas/create\")` ) Create a new Item
-    table(class="table table-stripped table-bordered")
+  button.btn( class="btn-dark ml-1", onclick= `click(\"/Atlas/create\")` ) Create a new Item
+  table(class="table table-stripped table-bordered")
         thead(style="background-color:brown;color:white") 
-            tr
-                td Item ID
-                td Item name
-                td Item state
-                td Item stateranking
-                td Update
-                td Details
-                td Delete
-        tbody
+           tr
+               td Item ID
+               td Item name
+               td Item state
+               td Item stateranking
+               td Update
+               td Details
+               td Delete
+           tbody
             
-            each item in items
+           each item in items
                 tr
                     td #{item._id}
                     td #{item.name}
                     td #{item.state}
                     td #{item.stateranking}
                     td 
-                      button.btn( class="btn-primary ml-1", onclick= `click(\"/Atlas/update/?id=${item._id}\")` ) Update
+                      button.btn( class="btn-dark ml-1", onclick= `click(\"/Atlas/update/?id=${item._id}\")` ) Update
                     td 
-                      button.btn( class="btn-primary ml-1", onclick= `click(\"/Atlas/detail/?id=${item._id}\")` ) Details
+                      button.btn( class="btn-dark ml-1", onclick= `click(\"/Atlas/detail/?id=${item._id}\")` ) Details
                     td 
-                      button.btn( class="btn-primary ml-1", onclick= `click(\"/Atlas/delete/?id=${item._id}\")` ) Delete 
+                      button.btn( class="btn-dark ml-1", onclick= `click(\"/Atlas/delete/?id=${item._id}\")` ) Delete 
                 script. 
                   function click(path){ 
                     window.location.href=path 
