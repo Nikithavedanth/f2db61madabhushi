@@ -9,5 +9,6 @@ var router = express.Router();
 
 /* GET Atlas */ 
 router.get('/', Atlas_controlers.Atlas_view_all_Page ); 
-
+router.get('/Atlass/:id', Atlas_controlers.Atlas_detail);
 module.exports = router;
+// GET request for one costume.  
