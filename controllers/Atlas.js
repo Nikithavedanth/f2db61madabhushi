@@ -32,6 +32,46 @@ exports.Atlas_detail = async function (req, res) {
         res.send(`{"error": document for id ${req.params.id} not found`);
     }
 };
+// Handle building the view for creating a Atlas. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.Atlas_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('Atlascreate', { title: 'Atlas Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+// Handle building the view for updating a Atlas. 
+// query provides the id 
+exports.Atlas_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await Atlas.findById(req.query.id) 
+        res.render('Atlasupdate', { title: 'Atlas Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 
+ // Handle a delete one view with id from query 
+exports.Atlas_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await Atlas.findById(req.query.id) 
+        res.render('Atlasdelete', { title: 'Atlas Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
 
 // List of all Atlas 
 // exports.Atlas_detail = async function(req, res) { 
@@ -61,21 +101,45 @@ exports.Atlas_create_post = async function (req, res) {
     }
 };
 
-// Handle Atlas delete form on DELETE. 
+ // Handle Atlas delete form on DELETE. 
 exports.Atlas_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: Atlas delete DELETE ' + req.params.id);
+    
 };
-
+// Handle Atlas delete on DELETE. 
+exports.Atlas_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Atlas.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
+// Handle a show one view with id specified by query 
+exports.Atlas_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await Atlas.findById( req.query.id) 
+        res.render('Atlasdetail',{ title: 'Atlas Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
 // List of all Atlas 
-exports.Atlas_delete = async function (req, res) {
-    try {
-        theAtlass = await Atlas.find();
-        res.send(theAtlass);
-    } catch (err) {
-        res.status(500);
-        res.send(`{"error": ${err}}`);
-    }
-};
+// exports.Atlas_delete = async function (req, res) {
+//     try {
+//         theAtlass = await Atlas.find();
+//         res.send(theAtlass);
+//     } catch (err) {
+//         res.status(500);
+//         res.send(`{"error": ${err}}`);
+//     }
+// };
 
 // Handle Atlas update form on PUT. 
 // exports.Atlas_update_put = function (req, res) {
