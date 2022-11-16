@@ -2,21 +2,23 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let Atlasid = toShow._id 
-  - let name = toShow.name 
-  - let state = toShow.state
-  - let stateranking = toShow.stateranking
-  div 
-    div.row 
-      div(class='AtlasAttr mr-3') Atlas ID is: 
-      div #{Atlasid} 
-    div.row 
-      div(class='AtlasAttr mr-3') Atlas name is: 
-      div #{name} 
-    div.row 
-      div(class='AtlasAttr mr-3') Atlas state is: 
-      div #{state} 
-    div.row 
-      div(class='AtlasAttr mr-3') Atlas stateranking is: 
-      div #{stateranking} 
+  if (toShow == null) 
+    h2 No instance to Update
+  else
+    - let Atlasid = toShow._id 
+    - let name = toShow.name 
+    - let state = toShow.state
+    - let stateranking = toShow.stateranking
+    div 
+      div.row 
+        div(class='AtlasAttr mr-3') Atlas ID is: 
+        div #{Atlasid} 
+      div.row 
+        div(class='AtlasAttr mr-3') Atlas name is: 
+        div #{name} 
+      div.row 
+        div(class='AtlasAttr mr-3') Atlas state is: 
+        div #{state} 
+      div.row 
+        div(class='AtlasAttr mr-3') Atlas stateranking is: 
+        div #{stateranking} 
