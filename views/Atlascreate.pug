@@ -3,14 +3,16 @@ extends layout
 block content 
   h1= title 
  
-  form(id='AtlasForm', action="/resource/Atlass", method="POST") 
-    div.form-group 
+  form(id='AtlasForm', action="/resource/Atlass", method="POST",class='d') 
+    div(class='d').from-group
+    img(src='images/maxresdefault.jpg')
+    div(class='d e').form-group 
         label.AtlasAttr(for='name') Atlas name 
         input#name(type='text', name='name') 
-    div.form-group 
+    div(class='d e').form-group 
         label.AtlasAttr(for='state') Atlas state
         input#state(type='text', name='state') 
-    div.form-group 
+    div(class='d e').form-group 
         label.AtlasAttr(for='stateranking') Atlas stateranking 
         input#stateranking(type='number', name='stateranking') 
     input(type="submit") 
