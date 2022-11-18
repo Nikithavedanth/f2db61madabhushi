@@ -1,7 +1,19 @@
 extends layout 
 block content 
   h1=title 
-  - let items = results 
+  -let items = results 
+  div(class="container-fluid")
+  div(class="row m-1")
+    each item in items
+      - let destination = `dispatch(\"/Atlass/update?id=${item._id}\")`
+      div(class="row-sm-2", class="m-1") Item #{item.name}(#{item.state}) is #{item.stateranking}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
+
+  script.
+    function dispatch(path)
+      {
+        window.location.href=path
+      }
   button.btn( class="btn-dark ml-1", onclick= `click(\"/Atlas/create\")` ) Create a new Item
   table(class="table table-stripped table-bordered")
         thead(style="background-color:brown;color:white") 
