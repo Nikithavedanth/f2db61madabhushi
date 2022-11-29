@@ -16,22 +16,7 @@ exports.Atlas_list = async function (req, res) {
     }
 };
 
-// for a specific Atlas. 
-exports.Atlas_detail = function (req, res) {
-    res.send('NOT IMPLEMENTED: Atlas detail: ' + req.params.id);
-};
 
-// for a specific Atlas. 
-exports.Atlas_detail = async function (req, res) {
-    console.log("detail" + req.params.id)
-    try {
-        result = await Atlas.findById(req.params.id)
-        res.send(result)
-    } catch (error) {
-        res.status(500)
-        res.send(`{"error": document for id ${req.params.id} not found`);
-    }
-};
 // Handle building the view for creating a Atlas. 
 // No body, no in path parameter, no query. 
 // Does not need to be async 
@@ -53,7 +38,7 @@ exports.Atlas_update_Page =  async function(req, res) {
         let result = await Atlas.findById(req.query.id) 
         res.render('Atlasupdate', { title: 'Atlas Update', toShow: result }); 
     } 
-    catch(err){ 
+    catch(err){   
         res.status(500) 
         res.send(`{'error': '${err}'}`); 
     } 
@@ -74,16 +59,17 @@ result });
 }; 
 
 // List of all Atlas 
-// exports.Atlas_detail = async function(req, res) { 
-//     try{ 
-//         theAtlass = await Atlas.find(); 
-//         res.send(theAtlass); 
-//     } 
-//     catch(err){ 
-//         res.status(500); 
-//         res.send(`{"error": ${err}}`); 
-//     }   
-// };
+exports.Atlas_detail = async function (req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await Atlas.findById(req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+};
+
 
 // Handle Atlas create on POST. 
 exports.Atlas_create_post = function (req, res) {
@@ -131,32 +117,32 @@ exports.Atlas_view_one_Page = async function(req, res) {
     } 
 }; 
 // List of all Atlas 
-// exports.Atlas_delete = async function (req, res) {
-//     try {
-//         theAtlass = await Atlas.find();
-//         res.send(theAtlass);
-//     } catch (err) {
-//         res.status(500);
-//         res.send(`{"error": ${err}}`);
-//     }
-// };
+exports.Atlas_delete = async function (req, res) {
+    try {
+        theAtlass = await Atlas.find();
+        res.send(theAtlass);
+    } catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
 
 // Handle Atlas update form on PUT. 
-// exports.Atlas_update_put = function (req, res) {
-//     res.send('NOT IMPLEMENTED: Atlas update PUT' + req.params.id);
-// };
+exports.Atlas_update_put = function (req, res) {
+    res.send('NOT IMPLEMENTED: Atlas update PUT' + req.params.id);
+};
 
-// List of all Atlas 
-// exports.Atlas_update_put = async function(req, res) { 
-//     try{ 
-//         theAtlass = await Atlas.find(); 
-//         res.send(theAtlass); 
-//     } 
-//     catch(err){ 
-//         res.status(500); 
-//         res.send(`{"error": ${err}}`); 
-//     }   
-// };
+//List of all Atlas 
+exports.Atlas_update_put = async function(req, res) { 
+    try{ 
+        theAtlass = await Atlas.find(); 
+        res.send(theAtlass); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};
 
 // Handle Atlas update form on PUT. 
 exports.Atlas_update_put = async function (req, res) {
@@ -212,3 +198,4 @@ exports.Atlas_create_post = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+

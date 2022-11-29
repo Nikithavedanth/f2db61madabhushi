@@ -1,24 +1,23 @@
 var express = require('express');
-const Atlas_controlers= require('../controllers/Atlas');
+const Atlas_controller=require('../controllers/Atlas');
 var router = express.Router();
 
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('Atlas', { title: 'Search Results Atlas' });
-// });
-/* GET detail Atlas page */ 
-router.get('/detail', Atlas_controlers.Atlas_view_one_Page); 
-/* GET Atlas */ 
-router.get('/', Atlas_controlers.Atlas_view_all_Page ); 
-// GET request for one Atlas. 
-router.get('/Atlass/:id', Atlas_controlers.Atlas_detail);
-/* GET create Atlas page */ 
-router.get('/create', Atlas_controlers.Atlas_create_Page); 
-/* GET create update page */ 
-router.get('/update', Atlas_controlers.Atlas_update_Page); 
-/* GET delete Atlas page */ 
-router.get('/delete', Atlas_controlers.Atlas_delete_Page); 
- 
- 
+// A little function to check if we have an authorized user and continue on 
+// redirect to login. 
+const secured = (req, res, next) => { 
+    if (req.user){ 
+      return next(); 
+    } 
+    req.session.returnTo = req.originalUrl; 
+    res.redirect("/login"); 
+  } 
+
+/* GET home page. */
+router.get('/', Atlas_controller.Atlas_view_all_Page);
+
+router.get('/create',secured, Atlas_controller.Atlas_create_Page); 
+router.get('/detail', Atlas_controller.Atlas_view_one_Page); 
+router.get('/update',secured, Atlas_controller.Atlas_update_Page); 
+router.get('/delete',secured, Atlas_controller.Atlas_delete_Page); 
+
 module.exports = router;
- 

@@ -2,6 +2,7 @@ extends layout
 block content 
   h1=title 
   -let items = results 
+  button.btn( class="btn-dark ml-1",id="create" onclick= `dispatch(\"/Atlass/create")` ) Create
   div(class="container-fluid")
   div(class="row m-1")
     each item in items
@@ -34,11 +35,11 @@ block content
                     td #{item.state}
                     td #{item.stateranking}
                     td 
-                      button.btn( class="btn-dark ml-1", onclick= `click(\"/Atlas/update/?id=${item._id}\")` ) Update
+                      button.btn( class="btn-dark ml-1", onclick= `dispatch(\"/Atlass/update?id=${item._id}\")` ) Update
                     td 
-                      button.btn( class="btn-dark ml-1", onclick= `click(\"/Atlas/detail/?id=${item._id}\")` ) Details
+                      button.btn( class="btn-dark ml-1", onclick= `dispatch(\"/Atlass/detail?id=${item._id}\")` ) Details
                     td 
-                      button.btn( class="btn-dark ml-1", onclick= `click(\"/Atlas/delete/?id=${item._id}\")` ) Delete 
+                      button.btn( class="btn-dark ml-1", onclick= `dispatch(\"/Atlass/delete?id=${item._id}\")` ) Delete 
                 script. 
                   function click(path){ 
                     window.location.href=path 

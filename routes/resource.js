@@ -17,4 +17,8 @@ router.put('/Atlass/:id', Atlas_controller.Atlas_update_put);
 router.get('/Atlass/:id', Atlas_controller.Atlas_detail);
 // GET request for list of all Atlas items.
 router.get('/Atlass', Atlas_controller.Atlas_list);
+
+
+ 
+
 module.exports = router;
