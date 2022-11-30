@@ -37,9 +37,9 @@ block content
   script. 
     function deleteOnid() { 
       console.log("starting delete") 
-      // delete first 
+      delete first 
       fetch(actionid, { 
-        method: 'DELETE'      // Don't need a body for the delete 
+        method: 'DELETE' Don't need a body for the delete 
       }).then((resp) => { 
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
